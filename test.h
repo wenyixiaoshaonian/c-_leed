@@ -18,6 +18,7 @@ private:
     ListNode * lde1,* lde2;
     ListNode * lde1_head, * lde2_head;
     ListNode * temp1, * temp2;
+    stack<ListNode> list1,list2;
 public:
     Solution() {
         lde1 = NULL;
@@ -40,25 +41,39 @@ public:
         return {x,y};
     }
     ListNode* addTwoNumbers() {
-        stack<ListNode> list1,list2;
+        stack<ListNode>* res;
+        flag = 0;
+        int num = 0;
         temp1 = lde1_head;
         temp2 = lde2_head;
+        cout << "addTwoNumbers" << endl;
         while(temp1 != NULL) {
             list1.push(*temp1);
             temp1 = temp1->next;
-        }
-        while(list1.size() >0) {
-            cout << list1.top().val;
-            list1.pop();
         }
         while(temp2 != NULL) {
             list2.push(*temp2);
             temp2 = temp2->next;
         }
+        /*add*/
+        while(list1.size() >0 || list2.size() >0) {
+            if(list1.size() >0) {
+                num += list1.top().val;
+                list1.pop();
+            }
+        }
+
         while(list1.size() >0) {
             cout << list1.top().val;
             list1.pop();
         }
+
+        cout << endl;
+        while(list2.size() >0) {
+            cout << list2.top().val;
+            list2.pop();
+        }
+        cout << endl;
     }
     void create_lde() {
         for(int x = 0;x< 5;x++) {
@@ -82,8 +97,9 @@ public:
         }
     }
     void del_lde() {
+        cout << "del..." << endl;
         temp1 = lde1_head;
-        temp2 = lde2_head;
+        temp2 = lde1_head;
         while(temp2 != NULL) {
             cout << temp2->val;
             temp2 = temp1->next;
@@ -101,5 +117,6 @@ public:
             temp1 = NULL;
             temp1 = temp2;
         }
+        cout << endl;
     }
 };

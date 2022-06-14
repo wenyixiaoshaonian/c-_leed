@@ -11,6 +11,6 @@ int main(int argc,char **argv) {
 
     test.create_lde();
 
-    // test.del_lde();
+    test.addTwoNumbers();
     return 0;
 }
