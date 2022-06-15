@@ -41,8 +41,8 @@ public:
         return {x,y};
     }
     ListNode* addTwoNumbers() {
-        stack<ListNode>* res;
-        flag = 0;
+        struct ListNode* res = NULL,* ldes_head = NULL,* temps = NULL;
+        int flag = 0;
         int num = 0;
         temp1 = lde1_head;
         temp2 = lde2_head;
@@ -61,17 +61,33 @@ public:
                 num += list1.top().val;
                 list1.pop();
             }
+            if(list2.size() >0) {
+                num += list2.top().val;
+                list2.pop();
+            }
+            if (flag) {
+                num +=1;
+                flag = 0;
+            }
+            if(num >= 10) {
+                flag = 1;
+                num %= 10;
+            }
+            res = new ListNode;
+            res->val = num;
+            num = 0;
+            if(!ldes_head)
+                ldes_head = res;
+            if(temps) {
+                temps->next = res;
+            }
+            temps = res;
+            temps->next = NULL;
         }
-
-        while(list1.size() >0) {
-            cout << list1.top().val;
-            list1.pop();
-        }
-
-        cout << endl;
-        while(list2.size() >0) {
-            cout << list2.top().val;
-            list2.pop();
+        /*del*/
+        while(ldes_head != NULL) {
+            cout << ldes_head->val;
+            ldes_head = ldes_head->next;
         }
         cout << endl;
     }
