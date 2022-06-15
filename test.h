@@ -84,10 +84,25 @@ public:
             temps = res;
             temps->next = NULL;
         }
-        /*del*/
-        while(ldes_head != NULL) {
-            cout << ldes_head->val;
-            ldes_head = ldes_head->next;
+
+        return ldes_head;
+    }
+    ListNode* reversalNumbers() {
+        struct ListNode* res = NULL,* ldes_head = NULL,* temps = NULL;
+        struct ListNode* next = NULL,*pre = NULL;
+        temp1 = lde1_head;
+        while(temp1) {
+            next = temp1->next;
+            temp1->next = res;
+            res = temp1;
+            temp1 = next;
+        }
+        ldes_head = res;
+        temps = ldes_head;
+        cout << "res 2  = " << endl;
+        while(temps) {
+            cout << temps->val;
+            temps = temps->next;
         }
         cout << endl;
     }

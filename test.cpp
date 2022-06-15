@@ -6,11 +6,18 @@ int main(int argc,char **argv) {
     Solution test;
     // res = test.twoSum(num,-8);
     // cout << res[0] << " " << res[1];
-
+    struct ListNode* res;
 
 
     test.create_lde();
 
-    test.addTwoNumbers();
+    // res = test.addTwoNumbers();
+    // cout << "res: " << endl;
+    // while(res != NULL) {
+    //     cout << res->val;
+    //     res = res->next;
+    // }
+    test.reversalNumbers();
+    cout << endl;
     return 0;
 }
