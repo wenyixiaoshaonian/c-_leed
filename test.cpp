@@ -8,7 +8,7 @@ int main(int argc,char **argv) {
     // cout << res[0] << " " << res[1];
     struct ListNode* res;
 
-
+    string s = "abcabcbb";
     test.create_lde();
 
     // res = test.addTwoNumbers();
@@ -17,7 +17,7 @@ int main(int argc,char **argv) {
     //     cout << res->val;
     //     res = res->next;
     // }
-    test.reversalNumbers();
+    test.lengthOfLongestSubstring(s);
     cout << endl;
     return 0;
 }

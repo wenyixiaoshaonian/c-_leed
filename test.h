@@ -1,7 +1,7 @@
 #include <vector>
 #include <stack>
 #include <iostream>
-
+#include <string>
 using namespace std;
 
 struct ListNode {
@@ -149,5 +149,25 @@ public:
             temp1 = temp2;
         }
         cout << endl;
+    }
+    //无重复字符的最长子串
+    int lengthOfLongestSubstring(string s) {
+        int result[50000] = {1};
+        int max = 1,flag = 0,y = 0;
+        for(int i=0; i<s.size()-1; i++) {
+            for(y = i+1;y < s.size()-2;y++) {
+                
+                if(s[y] != s[y+1]) {
+                    result[i]++;
+                }
+                else
+                    break;
+            }
+        }
+        for(int x = 0;x<s.size()-1;x++) {
+            if (result[x] > max)
+                max = result[x];
+        }
+        cout << max << endl;
     }
 };
