@@ -12,7 +12,10 @@
 
 CC ?= gcc
 CXX ?= g++
-INC_CLUDE = -I/home/vm001/mgit/ledc
+mkfile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
+mkfile_dir := $(dir $(mkfile_path))
+
+INC_CLUDE = -Imkfile_dir
 
 objects = test.o
 

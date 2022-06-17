@@ -29,6 +29,7 @@ public:
         temp2 = NULL;
     }
     ~Solution() { del_lde(); }
+    //链表
     vector<int> twoSum(vector<int>& nums, int target) {
         int x,y;
         for(x = 0;x<nums.size()-1;x++) {
@@ -152,22 +153,45 @@ public:
     }
     //无重复字符的最长子串
     int lengthOfLongestSubstring(string s) {
-        int result[50000] = {1};
+        int result[50000] = {0};
         int max = 1,flag = 0,y = 0;
-        for(int i=0; i<s.size()-1; i++) {
-            for(y = i+1;y < s.size()-2;y++) {
-                
-                if(s[y] != s[y+1]) {
-                    result[i]++;
+        if(s.size() == 0) {
+            max = 0;
+            cout << max << endl;
+            return max;
+        }
+        for(int i=1; i<=s.size(); i++) {
+            result[i-1]++;
+            for(y = i+1;y <= s.size();y++) {
+                for(int a = i;a < y;a++) {
+                    if(s[a-1] == s[y-1]) {
+                        flag = 1;
+                        break;
+                    }
+                }
+                if(flag) {
+                    flag = 0;
+                    break;
                 }
                 else
-                    break;
+                    result[i-1]++;
             }
         }
-        for(int x = 0;x<s.size()-1;x++) {
-            if (result[x] > max)
-                max = result[x];
+        for(int x = 1;x<s.size();x++) {
+            cout << "x " << x << "result[x] " << result[x-1] << endl;
+            if (result[x-1] > max)
+                max = result[x-1];
         }
+        
         cout << max << endl;
     }
+    void teststring() {
+        string test;
+        test.insert(0,"abcd");
+        test.insert(test.size(),"1111");
+//        test = test.replace(test.find("bc"),2,"qw");
+        cout << ">>==11 " << test << endl;
+//        cout << test[0] << endl;
+    }
+
 };
